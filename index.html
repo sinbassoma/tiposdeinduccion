@@ -511,7 +511,7 @@
   <!-- Character -->
   <div class="character-container" id="character">
     <div class="speed-lines" id="speedLines"></div>
-    <img src="https://image.qwenlm.ai/public_source/fd2e2daf-7ec2-4637-8039-7ad86179e4dd/1ac85e92d-e57d-433c-b410-d3cc217104cc.png" 
+    <img src="manito.png" 
          alt="Mascota SINBA" 
          style="width: 200px; height: auto; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));"
          id="characterImg">
@@ -601,7 +601,7 @@
     <button class="modal-close" onclick="closeModal('visitors')">✕</button>
     <div class="modal-icon" style="background: linear-gradient(135deg, #FF8A65, #E64A19);">👥</div>
     <div class="modal-title">Inducción de Visitantes</div>
-    <div class="modal-subtitle">Contratistas, recicladores y visitantes</div>
+    <div class="modal-subtitle">Visitantes y recicladores</div>
     <ul class="modal-list">
       <li style="animation-delay: 0.1s">
         <span class="check" style="background: rgba(255,138,101,0.2); color: #FF8A65;">✓</span>
@@ -754,11 +754,23 @@
   }
 
   function startInduction(type) {
-    closeModal(type);
-    spawnConfetti();
-    const names = { general: 'Inducción General', visitors: 'Inducción de Visitantes' };
-    setTimeout(() => showToast(`¡${names[type]} iniciada con éxito! 🚀`), 300);
-  }
+  closeModal(type);
+  spawnConfetti();
+
+  const names = { general: 'Inducción General', visitors: 'Inducción de Visitantes' };
+
+  setTimeout(() => {
+    showToast(`¡${names[type]} iniciada con éxito! 🚀`);
+
+    // 🔗 Redirección según el tipo
+    if (type === 'general') {
+      window.location.href = "https://sinbassoma.github.io/Inducci-n-visitantes/";
+    } else if (type === 'visitors') {
+      window.location.href = "https://https://sinbassoma.github.io/induccion/";
+    }
+
+  }, 1000);
+}
 
   // Progress bar simulation
   let progress = 0;
